@@ -12,10 +12,18 @@
 */
 
 
-// Home模块
+// Home 模块
 Route::group(['namespace' => 'Home'], function () {
     // 首页
     Route::get('/', 'IndexController@index');
     // 文章详情页
     Route::get('article/{id}', 'ArticleController@index');
+});
+
+// Admin 模块
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::group(['prefix' => 'index'], function () {
+        // 后台首页
+        Route::get('index', 'IndexController@index');
+    });
 });
