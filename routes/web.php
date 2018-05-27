@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Home模块
+Route::get('home/article/index', 'Home\ArticleController@index');
+// Route::prefix('home')->namespace('Home')->group(function () {
+//     Route::prefix('article')->group(function () {
+//         Route::get('index/{id}', 'ArticleController@index');
+//     });
+// });
