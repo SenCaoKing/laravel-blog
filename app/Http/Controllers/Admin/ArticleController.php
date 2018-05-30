@@ -75,14 +75,8 @@ class ArticleController extends Controller
     public function store(Store $request, Article $article)
     {
         $data = $request->except('_token');
-        p($data);
-        $tmp['content'] = strip_tags($data['content']);
-
-        p($tmp);die;
-        $article->addData($tmp);
-        die;
-        echo clean($data['content']);die;
-        p($data);die;
+        $article->addData($data);
+        redirect('admin/article/index');
     }
 
     /**
