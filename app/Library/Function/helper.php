@@ -1,5 +1,6 @@
 <?php
 
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
@@ -84,8 +85,6 @@ if ( !function_exists('ajaxReturn') ) {
         return response()->json($data, $status_code);
     }
 }
-
-
 
 if ( !function_exists('sendEmail') ) {
     /**
@@ -192,7 +191,7 @@ if ( !function_exists('save_to_file') ) {
     }
 }
 
-if (!function_exists('reSubstr')) {
+if ( !function_exists('reSubstr') ) {
     /**
      * 字符串截取，支持中文和其他编码
      *
@@ -207,5 +206,28 @@ if (!function_exists('reSubstr')) {
         $slice = mb_substr($str, $start, $length, $charset);
         $omit = mb_strlen($str) >= $length ? '...' : '';
         return $suffix ? $slice.$omit : $slice;
+    }
+}
+
+if ( !function_exists('AddTextWater') ) {
+    /**
+     * 给图片添加文字水印
+     *
+     * @param $file
+     * @param $text
+     * @param string $color
+     * @return mixed
+     */
+    function AddTextWater($file, $text, $color = '#0B94C1') {
+        $image = Image::make($file);
+        $image->text($text, $image->width()-10, $image->height()-10, function($font) use($color) {
+            $font->file(public_path().'./font/msyh.ttf');
+            $font->size(15);
+            $font->color($color);
+            $font->align('right');
+            $font->valign('buttom');
+        });
+        $image->save($file);
+        return $image;
     }
 }
