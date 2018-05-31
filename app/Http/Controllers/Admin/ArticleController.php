@@ -49,7 +49,7 @@ class ArticleController extends Controller
      */
     public function upload_image()
     {
-        $result = upload('editormd-image-file', 'upload/article');
+        $result = upload('editormd-image-file', 'uploads/article');
         p($result);
         if ($result['status_code'] == 200) {
             $data = [
@@ -99,6 +99,7 @@ class ArticleController extends Controller
      */
     public function edit()
     {
+        echo public_path();die;
         $file = public_path().'/uploads/article/20180531/5b0ecebba2125.jpg';
         $image = AddTextWater($file, 'Sen');
         return $image->response();
