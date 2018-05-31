@@ -72,7 +72,7 @@
                 <th>内容</th>
                 <td>
                     <div id="bjy-content">
-                        <textarea name="content">{{ old('content') }}</textarea>
+                        <textarea name="markdown">{{ old('markdown') }}</textarea>
                     </div>
                 </td>
             </tr>

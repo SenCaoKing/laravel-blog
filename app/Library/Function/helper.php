@@ -14,8 +14,8 @@ if ( !function_exists('p') ) {
         if (is_bool($data)) {
             $show_data = $data ? 'true' : 'false';
         } elseif (is_null($data)) {
-            $show_data = null;
-        } elseif (get_parent_class($data) === 'Illuminate\Support\Collection' && $to_array) {
+            $show_data = 'null';
+        } elseif (in_array(get_parent_class($data), ['Illuminate\Support\Collection', 'Illuminate\Pagination\AbstractPaginator', 'App\Models\Base']) && $to_array) {
             $data_array = $data->toArray();
             $show_data = '这是被转成数组的对象:<br>'.print_r($data_array, true);
         } else {
