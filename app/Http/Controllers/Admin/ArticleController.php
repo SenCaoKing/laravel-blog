@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Intervention\Image\Facades\Image;
 
 class ArticleController extends Controller
 {
@@ -96,9 +97,11 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        $file = public_path().'/uploads/article/20180531/5b0ecebba2125.jpg';
+        $image = AddTextWater($file, 'Sen');
+        return $image->response();
     }
 
     /**
@@ -108,7 +111,7 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
     }
