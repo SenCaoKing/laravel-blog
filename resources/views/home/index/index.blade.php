@@ -1,10 +1,11 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Sen Blog</title>
-    </head>
-    <body>
-    
-    </body>
-</html>
+@extends('layouts.home')
+
+@section('title', '发布文章')
+
+@section('keywords', '发布文章')
+
+@section('description', '发布新的文章')
+
+@section('content')
+
+@endsection
