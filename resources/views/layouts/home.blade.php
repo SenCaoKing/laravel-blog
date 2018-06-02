@@ -74,46 +74,25 @@
 </header>
 <!-- 顶部导航结束 -->
 
+<div class="b-h-70"></div>
+
 <div id="b-content" class="container">
     <div class="row">
         @yield('content')
 
         <!-- 通用右部区域开始 -->
         <div id="b-public-right" class="col-lg-4 hidden-xs hidden-sm hidden-md">
-            <div class="b-search">
-                <form class="form-inline"  role="form" action="" method="get">
-                    <input class="b-search-text" type="text" name="wd">
-                    <input class="b-search-submit" type="submit" value="全站搜索">
-                </form>
-            </div>
-            <div class="b-tags">
-                <h4 class="b-title">加入组织</h4>
-                <ul class="b-all-tname">
-                    <li class="b-qun-or-code">
-                        <img src="" alt="QQ">
-                    </li>
-                    <li class="b-qun-word">
-                        <p class="b-qun-nuber">
-                            1. 手Q扫左侧二维码
-                        </p>
-                        <p class="b-qun-nuber">
-                            2. 搜Q群：88199093
-                        </p>
-                        <p class="b-qun-code">
-                            3. 点击<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=bba3fea90444ee6caf1fb1366027873fe14e86bada254d41ce67768fadd729ee"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="博客群" title="博客群"></a>
-                        </p>
-                        <p class="b-qun-article">
-                            <a href="" target="_blank"> 写给 thinkphp 开发者的 laravel 系列教程 (一) 序言</a>
-                        </p>
-                    </li>
-                </ul>
-            </div>
             <div class="b-tags">
                 <h4 class="b-title">热门标签</h4>
                 <ul class="b-all-tname">
-                    <li class="b-tname">
-                        <a class="tstyle-1" href="" onclick="return recordId('tid','1')">laravel (1)</a>
-                    </li>
+                    <?php $tag_i = 0; ?>
+                    @foreach($tag as $v)
+                        <?php $tag_i++; ?>
+                        <?php $tag_i=$tag_i==5?1:$tag_i; ?>
+                            <li class="b-tname">
+                                <a class="tstyle-{{ $tag_i }}" href="{{ url('tag', [$v->id]) }}" onclick="return recordId('tid','{{ $v->id }}')">{{ $v->name }}({{ $v->article_count }})</a>
+                            </li>
+                    @endforeach
                 </ul>
             </div>
             <div class="b-recommend">
