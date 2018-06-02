@@ -40,25 +40,30 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav b-nav-parent">
                 <li class="hidden-xs b-nav-mobile"></li>
-                <li class="b-nav-cname <eq name="cid" value="index">b-nav-active</eq>  ">
+                <li class="b-nav-cname @if($cid == 'index') b-nav-active @endif">
                     <a href="/" onclick="recordId('/',0)">首页</a>
                 </li>
-
-                <li class="b-nav-cname ">
-                    <a href="http://111.231.142.198/category/1" onclick="return recordId('cid', '1')">php</a>
+                @foreach($category as $v)
+                    <li class="b-nav-cname @if($v->id == $cid) b-nav-native @endif ">
+                        <a href="" onclick="return recordId('cid', {{ $v->id }})">{{ $v->name }}</a>
+                    </li>
+                @endforeach
+                <li class="b-nav-cname @if($v->id == $cid) b-nav-native @endif ">
+                    <a href="">随言碎语</a>
                 </li>
-                <li class="b-nav-cname ">
-                    <a href="http://111.231.142.198/chat">随言碎语</a>
-                </li>
-                <li class="b-nav-cname hidden-sm  ">
-                    <a href="http://111.231.142.198/git">开源项目</a>
+                <li class="b-nav-cname hiddem-sm @if($v->id == $cid) b-nav-native @endif ">
+                    <a href="">开源项目</a>
                 </li>
             </ul>
             <ul id="b-login-word" class="nav navbar-nav navbar-right">
+                <li class="b-nav-cname b-nav-login">
+                    <div class="hidden-xs b-login-mobile"></div>
+                    <a href="javascript:;" onclick="login()">登录</a>
+                </li>
                 <li class="b-user-info">
-                    <span><img class="b-head_img" src="http://111.231.142.198/statics/gentelella/production/images/img.jpg" alt="test" title="test"  /></span>
+                    <span><img class="b-head_img" src="" alt="test" title="test" /></span>
                     <span class="b-nickname">test</span>
-                    <span><a href="http://111.231.142.198/auth/oauth/logout">退出</a></span>
+                    <span><a href="">退出</a></span>
                 </li>
             </ul>
         </div>
@@ -66,72 +71,14 @@
 </header>
 <!-- 顶部导航结束 -->
 
-<div class="b-h-70"></div>
-
 <div id="b-content" class="container">
     <div class="row">
-        <!-- 左侧列表开始 -->
-        <div class="col-xs-12 col-md-12 col-lg-8">
-            <!-- 循环文章列表开始 -->
-            <div class="row b-one-article">
-                <h3 class="col-xs-12 col-md-12 col-lg-12">
-                    <a class="b-oa-title" href="http://111.231.142.198/article/1" target="_blank"> 写给 thinkphp 开发者的 laravel 系列教程 (一) 序言</a>
-                </h3>
-                <div class="col-xs-12 col-md-12 col-lg-12 b-date">
-                    <ul class="row">
-                        <li class="col-xs-5 col-md-2 col-lg-3">
-                            <i class="fa fa-user"></i> 白俊遥
-                        </li>
-                        <li class="col-xs-7 col-md-3 col-lg-3">
-                            <i class="fa fa-calendar"></i> 2017-07-16 07:35:12
-                        </li>
-                        <li class="col-xs-5 col-md-2 col-lg-2">
-                            <i class="fa fa-list-alt"></i> <a href="http://111.231.142.198/category/1" target="_blank">php</a>
-                        </li>
-                        <li class="col-xs-7 col-md-5 col-lg-4 "><i class="fa fa-tags"></i>
-                            <a class="b-tag-name" href="http://111.231.142.198/tag/1" target="_blank">laravel</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-xs-12 col-md-12 col-lg-12">
-                    <div class="row">
-                        <!-- 文章封面图片开始 -->
-                        <div class="col-sm-6 col-md-6 col-lg-4 hidden-xs">
-                            <figure class="b-oa-pic b-style1">
-                                <a href="http://111.231.142.198/article/1" target="_blank">
-                                    <img src="http://111.231.142.198/uploads/article/5958ab4dd9db4.jpg" alt="白俊遥博客" title="白俊遥博客">
-                                </a>
-                                <figcaption>
-                                    <a href="http://111.231.142.198/article/1" target="_blank"></a>
-                                </figcaption>
-                            </figure>
-                        </div>
-                        <!-- 文章封面图片结束 -->
+        @yield('content')
 
-                        <!-- 文章描述开始 -->
-                        <div class="col-xs-12 col-sm-6  col-md-6 col-lg-8 b-des-read">
-                            终于；终于；终于；开始正式写 laravel 系列了；本系列教程主要面向的是多少懂点 thinkphp3.X 的开发者们；我把我从tp3转到laravel的历程转成一篇篇的文章教程；愿这一系列的文章；能成为童鞋们踏入laravel的引路人；如果还没下定决定要使用laravel；那么我上来就是一个连接；不是别人说好我也跟着说好的；而是我实实在在的使用过后；...
-                        </div>
-                        <!-- 文章描述结束 -->
-                    </div>
-                </div>
-                <a class=" b-readall" href="http://111.231.142.198/article/1" target="_blank">阅读全文</a>
-            </div>
-            <!-- 循环文章列表结束 -->
-
-            <!-- 列表分页开始 -->
-            <div class="row">
-                <div class="col-xs-12 col-md-12 col-lg-12 b-page text-center">
-
-                </div>
-            </div>
-            <!-- 列表分页结束 -->
-        </div>
-        <!-- 左侧列表结束 -->
         <!-- 通用右部区域开始 -->
         <div id="b-public-right" class="col-lg-4 hidden-xs hidden-sm hidden-md">
             <div class="b-search">
-                <form class="form-inline"  role="form" action="http://111.231.142.198/search" method="get">
+                <form class="form-inline"  role="form" action="" method="get">
                     <input class="b-search-text" type="text" name="wd">
                     <input class="b-search-submit" type="submit" value="全站搜索">
                 </form>
@@ -140,7 +87,7 @@
                 <h4 class="b-title">加入组织</h4>
                 <ul class="b-all-tname">
                     <li class="b-qun-or-code">
-                        <img src="http://111.231.142.198/uploads/images/default.png" alt="QQ">
+                        <img src="" alt="QQ">
                     </li>
                     <li class="b-qun-word">
                         <p class="b-qun-nuber">
@@ -150,10 +97,10 @@
                             2. 搜Q群：88199093
                         </p>
                         <p class="b-qun-code">
-                            3. 点击<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=bba3fea90444ee6caf1fb1366027873fe14e86bada254d41ce67768fadd729ee"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="白俊遥博客群" title="白俊遥博客群"></a>
+                            3. 点击<a target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=bba3fea90444ee6caf1fb1366027873fe14e86bada254d41ce67768fadd729ee"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="博客群" title="博客群"></a>
                         </p>
                         <p class="b-qun-article">
-                            <a href="http://111.231.142.198/article/1" target="_blank"> 写给 thinkphp 开发者的 laravel 系列教程 (一) 序言</a>
+                            <a href="" target="_blank"> 写给 thinkphp 开发者的 laravel 系列教程 (一) 序言</a>
                         </p>
                     </li>
                 </ul>
@@ -162,26 +109,26 @@
                 <h4 class="b-title">热门标签</h4>
                 <ul class="b-all-tname">
                     <li class="b-tname">
-                        <a class="tstyle-1" href="http://111.231.142.198/tag/1" onclick="return recordId('tid','1')">laravel (1)</a>
+                        <a class="tstyle-1" href="" onclick="return recordId('tid','1')">laravel (1)</a>
                     </li>
                 </ul>
             </div>
             <div class="b-recommend">
                 <h4 class="b-title">置顶推荐</h4>
                 <p class="b-recommend-p">
-                    <a class="b-recommend-a" href="http://111.231.142.198/article/1" target="_blank"><span class="fa fa-th-list b-black"></span>  写给 thinkphp 开发者的 laravel 系列教程 (一) 序言</a>
+                    <a class="b-recommend-a" href="" target="_blank"><span class="fa fa-th-list b-black"></span>  写给 thinkphp 开发者的 laravel 系列教程 (一) 序言</a>
                 </p>
             </div>
             <div class="b-link">
                 <h4 class="b-title">最新评论</h4>
                 <div>
                     <ul class="b-new-comment  b-new-commit-first ">
-                        <img class="b-head-img js-head-img" src="http://111.231.142.198/uploads/avatar/default.jpg" _src="http://111.231.142.198/uploads/article/default.jpg" alt="白俊遥">
+                        <img class="b-head-img js-head-img" src="" _src="" alt="">
                         <li class="b-nickname">
-                            白俊遥<span>2017-07-16 07:35:12</span>
+                            <span>2017-07-16 07:35:12</span>
                         </li>
                         <li class="b-nc-article">
-                            在<a href="http://111.231.142.198/article/1" target="_blank"> 写给 thinkphp 开发者的 la...</a>中评论
+                            在<a href="" target="_blank"> 写给 thinkphp 开发者的 la...</a>中评论
                         </li>
                         <li class="b-content">
                             评论的内容
@@ -193,7 +140,7 @@
                 <div class="b-link">
                     <h4 class="b-title">友情链接</h4>
                     <p>
-                        <a class="b-link-a" href="https://baijunyao.com" target="_blank"><span class="fa fa-link b-black"></span> 白俊遥博客</a>
+                        <a class="b-link-a" href="" target="_blank"><span class="fa fa-link b-black"></span> 博客</a>
                     </p>
                 </div>
             </eq>
@@ -205,9 +152,9 @@
         <footer id="b-foot" class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
             <ul>
                 <li class="text-center">
-                    本博客使用免费开源的 <a rel="nofollow" href="https://github.com/baijunyao/laravel-bjyblog" target="_blank">laravel-bjyblog</a> v5.5.1.1 搭建 © 2014-2018 localhost 版权所有  ICP证：豫ICP备14009546号-3                 </li>
+                    本博客使用免费开源的 <a rel="nofollow" href="" target="_blank">laravel-bjyblog</a> v5.5.1.1 搭建 © 2014-2018 localhost 版权所有  ICP证：                 </li>
                 <li class="text-center">
-                    联系邮箱：baijunyao@baijunyao.com
+                    联系邮箱：
                 </li>
             </ul>
             <div class="b-h-20"></div>
@@ -231,13 +178,13 @@
             <div class="col-xs-12 col-md-12 col-lg-12 b-login-row">
                 <ul class="row">
                     <li class="col-xs-6 col-md-4 col-lg-4 b-login-img">
-                        <a href="http://111.231.142.198/auth/oauth/redirectToProvider/qq"><img src="http://111.231.142.198/images/home/qq-login.png" alt="QQ登录" title="QQ登录"></a>
+                        <a href=""><img src="" alt="QQ登录" title="QQ登录"></a>
                     </li>
                     <li class="col-xs-6 col-md-4 col-lg-4 b-login-img">
-                        <a href="http://111.231.142.198/auth/oauth/redirectToProvider/weibo"><img src="http://111.231.142.198/images/home/sina-login.png" alt="微博登录" title="微博登录"></a>
+                        <a href=""><img src="" alt="微博登录" title="微博登录"></a>
                     </li>
                     <li class="col-xs-6 col-md-4 col-lg-4 b-login-img">
-                        <a href="http://111.231.142.198/auth/oauth/redirectToProvider/github"><img src="http://111.231.142.198/images/home/github-login.jpg" alt="github登录" title="github登录"></a>
+                        <a href=""><img src="" alt="github登录" title="github登录"></a>
                     </li>
                 </ul>
             </div>
