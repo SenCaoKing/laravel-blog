@@ -175,21 +175,17 @@
 </div>
 <!-- 登录模态框结束 -->
 
-<script src="http://111.231.142.198/statics/js/jquery-2.0.0.min.js"></script>
+<script src="{{ asset('statics/js/jquery-2.0.0.min.js') }}"></script>
 <script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
+    logoutUrl="{{url('home/user/logout')}}";
 </script>
-<script src="http://111.231.142.198/statics/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="{{ asset('statics/bootstrap-3.3.5/js/bootstrap.min.js') }}"></script>
 <!--[if lt IE 9]>
-<script src="http://111.231.142.198/statics/js/html5shiv.min.js"></script>
-<script src="http://111.231.142.198/statics/js/respond.min.js"></script>
+<script src="{{ asset('statics/js/html5shiv.min.js') }}"></script>
+<script src="{{ asset('statics/js/respond.min.js') }}"></script>
 <![endif]-->
-<script src="http://111.231.142.198/statics/pace/pace.min.js"></script>
-<script src="http://111.231.142.198/js/home/index.js"></script>
+<script src="{{ asset('statics/pace/pace.min.js') }}"></script>
+<script src="{{ asset('js/home/index.js') }}"></script>
 <!-- 百度页面自动提交开始 -->
 <script>
     (function(){
