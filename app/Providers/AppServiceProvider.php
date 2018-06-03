@@ -28,13 +28,13 @@ class AppServiceProvider extends ServiceProvider
                 ->where('is_top', 1)
                 ->orderBy('created_at', 'desc')
                 ->get();
-            p($topArticle);
             $assign = [
-                'cid'      => 'index',
-                'category' => $category,
-                'tag'      => $tag,
-                'user'     => [
-                    'name' => session('user.name'),
+                'cid'        => 'index',
+                'category'   => $category,
+                'tag'        => $tag,
+                'topArticle' => $topArticle,
+                'user'       => [
+                    'name'   => session('user.name'),
                     'avatar' => session('user.avatar')
                 ]
             ];

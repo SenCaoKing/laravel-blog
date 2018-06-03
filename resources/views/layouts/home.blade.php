@@ -98,7 +98,10 @@
             <div class="b-recommend">
                 <h4 class="b-title">置顶推荐</h4>
                 <p class="b-recommend-p">
-                    <a class="b-recommend-a" href="" target="_blank"><span class="fa fa-th-list b-black"></span>  写给 thinkphp 开发者的 laravel 系列教程 (一) 序言</a>
+                    @foreach($topArticle as $v)
+                        <a class="b-recommend-a" href="{{ url('article', [$v->id]) }}" target="_blank"><span class="fa fa-th-list b-black"></span> {{ $v->title }}</a>
+                    @endforeach
+
                 </p>
             </div>
             <div class="b-link">
