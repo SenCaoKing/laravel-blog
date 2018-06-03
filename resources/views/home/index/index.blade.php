@@ -1,10 +1,10 @@
 @extends('layouts.home')
 
-@section('title', '发布文章')
+@section('title', 'Sen Blog,技术博客,个人博客,php博客系统')
 
-@section('keywords', '发布文章')
+@section('keywords', '个人博客系统,个人博客模板,thinkphp博客,php博客,技术博客,Sen')
 
-@section('description', '发布新的文章')
+@section('description', 'Sen的php博客,个人技术博客,senblog,senadmin官方网站')
 
 @section('content')
     <!-- 左侧列表开始 -->
