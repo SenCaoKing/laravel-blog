@@ -11,7 +11,6 @@ class IndexController extends Controller
     public function index(Article $articleModel)
     {
         $article = $articleModel->getHomeList();
-        p($article);
         $assign = [
             'article'    => $article,
             'title_word' => ''
