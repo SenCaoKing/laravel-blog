@@ -92,4 +92,24 @@ class Article extends Base
         return $data;
     }
 
+    public function getHomeList()
+    {
+        // 获取文章分页
+        $data = $this
+            ->select('articles.id', 'articles.title', 'articles.cover', 'articles.author', 'articles.description', 'articles.category_id', 'articles.created_at', 'c.name as categories.name')
+            ->join('categories as c', 'articles.category_id', 'c.id')
+            ->orderBy('articles.created_at', 'desc')
+            ->paginate(1);
+        // 提取文章id组成一个数组
+        $dataArray = $data->toArray();
+        $article_id = array_column($dataArray['data'], 'id');
+        // 传递文章id数组获取标签数据
+        $articleTagModel = new ArticleTag();
+        $tag = $articleTagModel->getTagNameByArticleIds($article_id);
+        foreach ($data as $k => $v) {
+            $data[$k]->tag = isset($tag[$v->id]) ? $tag[$v->id] : [];
+        }
+        return $data;
+    }
+
 }
