@@ -107,18 +107,20 @@
             <div class="b-link">
                 <h4 class="b-title">最新评论</h4>
                 <div>
-                    <ul class="b-new-comment  b-new-commit-first ">
-                        <img class="b-head-img js-head-img" src="" _src="" alt="">
-                        <li class="b-nickname">
-                            <span>2017-07-16 07:35:12</span>
-                        </li>
-                        <li class="b-nc-article">
-                            在<a href="" target="_blank"> 写给 thinkphp 开发者的 la...</a>中评论
-                        </li>
-                        <li class="b-content">
-                            评论的内容
-                        </li>
-                    </ul>
+                    @foreach($comment as $v)
+                        <ul class="b-new-comment @if($loop->first) b-new-commit-first @endif">
+                            <img class="b-head-img js-head-img" src="{{ asset('images/home/qq_default.jpg') }}" _src="{{ $v->avatar }}" alt="{{ $v->name }}">
+                            <li class="b-nickname">
+                                {{ $v->name }}<span>{{ wordTime($v->created_at) }}</span>
+                            </li>
+                            <li class="b-nc-article">
+                                在<a href="{{ url('article', [$v->article_id]) }}" target="_blank">{{ $v->title }}</a>中评论
+                            </li>
+                            <li class="b-content">
+                                {!! $v->content !!}
+                            </li>
+                        </ul>
+                    @endforeach
                 </div>
             </div>
             <eq name="show_link" value="1">
