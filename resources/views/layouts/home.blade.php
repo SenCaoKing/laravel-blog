@@ -49,10 +49,10 @@
                     </li>
                 @endforeach
                 <li class="b-nav-cname @if($v->id == $cid) b-nav-native @endif ">
-                    <a href="">随言碎语</a>
+                    <a href="{{ url('chat') }}">随言碎语</a>
                 </li>
                 <li class="b-nav-cname hiddem-sm @if($v->id == $cid) b-nav-native @endif ">
-                    <a href="">开源项目</a>
+                    <a href="{{ url('git') }}">开源项目</a>
                 </li>
             </ul>
             <ul id="b-login-word" class="nav navbar-nav navbar-right">
@@ -134,6 +134,12 @@
                     </p>
                 </div>
             </eq>
+            <div class="b-search">
+                <form class="form-inline" role="form" action="{{ url('search') }}" method="get">
+                    <input class="b-search-text" type="text" name="search_word">
+                    <input class="b-search-submit" type="submit" value="全站搜索">
+                </form>
+            </div>
         </div>
         <!-- 通用右部区域结束 -->
     </div>

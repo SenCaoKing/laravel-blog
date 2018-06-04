@@ -46,7 +46,7 @@
                             <div class="col-sm-6 col-md-6 col-lg-4 hidden-xs">
                                 <figure class="b-oa-pic b-style1">
                                     <a href="{{ url('article', $v->id) }}" target="_blank">
-                                        <img src="{{ asset($v->cover) }}" alt="博客" title="博客">
+                                        <img src="{{ asset($v->cover) }}" alt="{{ $config['IMAGE_TITLE_ALT_WORD'] }}" title="{{ $config['IMAGE_TITLE_ALT_WORD'] }}">
                                     </a>
                                     <figcaption>
                                         <a href="{{ url('article', [$v->id]) }}" target="_blank"></a>
@@ -62,7 +62,7 @@
                             <!-- 文章描述结束 -->
                         </div>
                     </div>
-                    <a class=" b-readall" href="{{ $v->url }}" target="_blank">阅读全文</a>
+                    <a class=" b-readall" href="{{ url('article', [$v->id]) }}" target="_blank">阅读全文</a>
                 </div>
             @endforeach
 
