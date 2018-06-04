@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-class Link extends Model
+class FriendshipLink extends Base
 {
     protected $guarded = [];
-
-
 }
