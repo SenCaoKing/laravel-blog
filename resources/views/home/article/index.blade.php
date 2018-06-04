@@ -1,69 +1,59 @@
 @extends('layouts.home')
 
-@section('title', '发布文章')
+@section('title', $data->title)
 
-@section('keywords', '发布文章')
+@section('keywords', $data->keywords)
 
-@section('description', '发布新的文章')
+@section('description', $data->description)
 
 @section('content')
-    {{ $loginUserData }}
     <!-- 左侧列表开始 -->
     <div class="col-xs-12 col-md-12 col-lg-8">
-        <!-- 循环文章列表开始 -->
-        <div class="row b-one-article">
-            <h3 class="col-xs-12 col-md-12 col-lg-12">
-                <a class="b-oa-title" href="" target="_blank"> 写给 thinkphp 开发者的 laravel 系列教程 (一) 序言</a>
-            </h3>
-            <div class="col-xs-12 col-md-12 col-lg-12 b-date">
-                <ul class="row">
-                    <li class="col-xs-5 col-md-2 col-lg-3">
-                        <i class="fa fa-user"></i>
-                    </li>
-                    <li class="col-xs-7 col-md-3 col-lg-3">
-                        <i class="fa fa-calendar"></i> 2017-07-16 07:35:12
-                    </li>
-                    <li class="col-xs-5 col-md-2 col-lg-2">
-                        <i class="fa fa-list-alt"></i> <a href="" target="_blank">php</a>
-                    </li>
-                    <li class="col-xs-7 col-md-5 col-lg-4 "><i class="fa fa-tags"></i>
-                        <a class="b-tag-name" href="" target="_blank">laravel</a>
+        <div class="row b-article">
+            <h1 class="col-xs-12 col-md-12 col-lg-12 b-title">{{ $data->title }}</h1>
+            <div class="col-xs-12 col-md-12 col-lg-12">
+                <ul class="row b-metadata">
+                    <li class="col-xs-5 col-md-2 col-lg-3"><i class="fa fa-user"></i> {{ $data->author }}</li>
+                    <li class="col-xs-7 col-md-3 col-lg-3"><i class="fa fa-calendar"></i> {{ $data->created_at }}</li>
+                    <li class="col-xs-5 col-md-2 col-lg-2"><i class="fa fa-list-alt"></i> <a href="PP url('homr/index/category', [$data->cid])">{{ $data->category_name }}</a></li>
+                    <li class="col-xs-7 col-md-5 col-lg-4"><i class="fa fa-tags"></i>
+                        @foreach($data->tag as $v)
+                            {{ $v->name }}
+                        @endforeach
                     </li>
                 </ul>
             </div>
-            <div class="col-xs-12 col-md-12 col-lg-12">
-                <div class="row">
-                    <!-- 文章封面图片开始 -->
-                    <div class="col-sm-6 col-md-6 col-lg-4 hidden-xs">
-                        <figure class="b-oa-pic b-style1">
-                            <a href="" target="_blank">
-                                <img src="" alt="博客" title="博客">
-                            </a>
-                            <figcaption>
-                                <a href="" target="_blank"></a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <!-- 文章封面图片结束 -->
-
-                    <!-- 文章描述开始 -->
-                    <div class="col-xs-12 col-sm-6  col-md-6 col-lg-8 b-des-read">
-                        终于；终于；终于；开始正式写 laravel 系列了；本系列教程主要面向的是多少懂点 thinkphp3.X 的开发者们；我把我从tp3转到laravel的历程转成一篇篇的文章教程；愿这一系列的文章；能成为童鞋们踏入laravel的引路人；如果还没下定决定要使用laravel；那么我上来就是一个连接；不是别人说好我也跟着说好的；而是我实实在在的使用过后；...
-                    </div>
-                    <!-- 文章描述结束 -->
-                </div>
-            </div>
-            <a class=" b-readall" href="" target="_blank">阅读全文</a>
-        </div>
-        <!-- 循环文章列表结束 -->
-
-        <!-- 列表分页开始 -->
-        <div class="row">
-            <div class="col-xs-12 col-md-12 col-lg-12 b-page text-center">
-
+            <div class="col-xs-12 col-md-12 col-lg-12 b-content-word">
+                {{ $data->markdown }}
+                <eq name="article['current']['is_original']" value="1">
+                    <p class="b-h-20"></p>
+                    <p class="b-copyright">
+                        {$Think.config.COPYRIGTH_WORD}
+                    </p>
+                </eq>
+                <ul class="b-prev-next">
+                    <li class="b-prev">
+                        上一篇:
+                        <empty name="article['prev']">
+                            <span>没有了</span>
+                            <else />
+                            <a href="{$article['prev']['url']}">{$article['prev']['title']}</a>
+                        </empty>
+                    </li>
+                    <li class="b-next">
+                        下一篇:
+                        <empty name="article['next']">
+                            <span>没有了</span>
+                            <else />
+                            <a href="{$article['next']['url']}">{$article['next']['title']}</a>
+                        </empty>
+                    </li>
+                </ul>
             </div>
         </div>
-        <!-- 列表分页结束 -->
+        {{--引入通用评论开始--}}
+        <include file="Public/public_comment" />
+        {{--引入通用评论结束--}}
     </div>
-    <!-- 左侧列表结束 -->
+    <!-- 左侧文章结束 -->
 @endsection
