@@ -21,7 +21,6 @@ class Comment extends Base
             ->where('ou.is_admin', '<>', 1)
             ->limit(20)
             ->get();
-        p($data);
         foreach ($data as $k => $v) {
             // 截取文章标题
             $data[$k]->title = reSubstr($v->title, 0, 20);

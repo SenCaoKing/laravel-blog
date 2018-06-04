@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>@yield('title') - laravel-SenBlog</title>
+    <title>@yield('title') - {{ $config['WEB_NAME'] }}</title>
     <meta name="keywords" content="@yield('keywords')" />
     <meta name="description" content="@yield('description')" />
     <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <meta name="author" content="sen,sen.com">
+    <meta name="author" content="Sen, {{ htmlspecialchars_decode($config['ADMIN_EMAIL']) }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="{{ asset('statics/bootstrap-3.3.5/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('statics/bootstrap-3.3.5/css/bootstrap-theme.min.css') }}">
@@ -144,7 +144,7 @@
                 <li class="text-center">
                     本博客使用免费开源的 <a rel="nofollow" href="" target="_blank">laravel-bjyblog</a> v5.5.1.1 搭建 © 2014-2018 localhost 版权所有  ICP证：                 </li>
                 <li class="text-center">
-                    联系邮箱：
+                    联系邮箱：{{ htmlspecialchars_decode($config['ADMIN_EMAIL']) }}
                 </li>
             </ul>
             <div class="b-h-20"></div>
@@ -212,7 +212,8 @@
 <!-- 百度页面自动提交结束 -->
 
 <!-- 百度统计开始 -->
-
+{!! htmlspecialchars_decode($config['WEB_STATISTICS']) !!}
 <!-- 百度统计结束 -->
+@yield('js')
 </body>
 </html>
