@@ -45,8 +45,8 @@
                             <!-- 文章封面图片开始 -->
                             <div class="col-sm-6 col-md-6 col-lg-4 hidden-xs">
                                 <figure class="b-oa-pic b-style1">
-                                    <a href="{{ $v->url }}" target="_blank">
-                                        <img src="{{ $v->cover }}" alt="博客" title="博客">
+                                    <a href="{{ url('article', $v->id) }}" target="_blank">
+                                        <img src="{{ asset($v->cover) }}" alt="博客" title="博客">
                                     </a>
                                     <figcaption>
                                         <a href="{{ url('article', [$v->id]) }}" target="_blank"></a>
