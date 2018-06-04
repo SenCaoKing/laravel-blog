@@ -174,13 +174,19 @@
             <div class="col-xs-12 col-md-12 col-lg-12 b-login-row">
                 <ul class="row">
                     <li class="col-xs-6 col-md-4 col-lg-4 b-login-img">
-                        <a href=""><img src="" alt="QQ登录" title="QQ登录"></a>
+                        <a href=""><img src="{{ asset('images/home/qq-login.png') }}" alt="QQ登录" title="QQ登录"></a>
                     </li>
                     <li class="col-xs-6 col-md-4 col-lg-4 b-login-img">
-                        <a href=""><img src="" alt="微博登录" title="微博登录"></a>
+                        <a href=""><img src="{{ asset('images/home/sina-login.png') }}" alt="微博登录" title="微博登录"></a>
                     </li>
                     <li class="col-xs-6 col-md-4 col-lg-4 b-login-img">
-                        <a href=""><img src="" alt="github登录" title="github登录"></a>
+                        <a href=""><img src="{{ asset('images/home/douban-login.png') }}" alt="豆瓣登录" title="豆瓣登录"></a>
+                    </li>
+                    <li class="col-xs-6 col-md-4 col-lg-4 b-login-img">
+                        <a href=""><img src="{{ asset('images/home/renren-login.png') }}" alt="人人登录" title="人人登录"></a>
+                    </li>
+                    <li class="col-xs-6 col-md-4 col-lg-4 b-login-img">
+                        <a href=""><img src="{{ asset('images/home/kaixin-login.png') }}" alt="开心网登录" title="开心网登录"></a>
                     </li>
                 </ul>
             </div>
