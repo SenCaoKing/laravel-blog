@@ -2014,6 +2014,7 @@
             };
             
             marked.setOptions(markedOptions);
+            console.log(editormd.markedRenderer(markdownToC, rendererOptions));
                     
             var newMarkdownDoc = editormd.$marked(cmValue, markedOptions);
             
@@ -3968,7 +3969,6 @@
         } else {
             saveTo.remove();
         }
-        
         div.addClass("markdown-body " + this.classPrefix + "html-preview").append(markdownParsed);
         
         var tocContainer = (settings.tocContainer !== "") ? $(settings.tocContainer) : div;
