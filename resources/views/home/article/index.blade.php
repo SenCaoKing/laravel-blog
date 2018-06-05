@@ -78,5 +78,5 @@
         $('js-content').html(str);
         $('pre').addClass('line-numbers');
     </script>
-    
+
 @endsection
