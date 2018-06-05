@@ -28,7 +28,7 @@
                 </ul>
             </div>
             <div class="col-xs-12 col-md-12 col-lg-12 b-content-word">
-                {!! $data->markdown !!}}
+                <div class="js-content">{!! $data->markdown !!}}</div>
                 <eq name="article['current']['is_original']" value="1">
                     <p class="b-h-20"></p>
                     <p class="b-copyright">
