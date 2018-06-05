@@ -11,7 +11,6 @@ class ArticleController extends Controller
     public function index($id, Article $article)
     {
         $data = $article->getDataById($id);
-//        echo $data['markdown'];die;
         $assign = [
             'data' => $data
         ];

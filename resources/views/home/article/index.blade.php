@@ -68,7 +68,6 @@
     <script>
         // 获取文章内容
         var articleMarkdown = $('.js-content').text();
-        articleMarkdown = articleMarkdown.replace(/\n{3,}/g, "&nbsp;\n");
         marked.setOptions({
             sanitize: true,
             gfm: true,
@@ -76,15 +75,20 @@
         })
         // markdown 转 html
         var articleHtml = marked(articleMarkdown);
-        console.log(articleHtml);
-        console.log(3333333333);
-        articleHtml = articleHtml.replace("&nbsp;", " <br>");
-        console.log(articleHtml);
         $('.js-content').html(articleHtml);
+
+        // 保留文章的换行
         $.each($('.js_content p'), function (index, val) {
             var html = $(val).html();
             $(val).html(html.replace(/\n/g," <br>"));
+            $(val).after('<br>');
         })
+        // 代码自带边距 所以可以不保留前面的br
+        $.each($('pre'), function (index, val) {
+            $(val).prev().remove();
+        })
+        // ol 下不需要br
+        $('ol br').remove();
         // 添加行数
         $('pre').addClass('line-numbers');
         // 新页面跳转
