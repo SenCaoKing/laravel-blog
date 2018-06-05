@@ -12,9 +12,9 @@ class ArticleController extends Controller
     {
         $data = $article->getDataById($id);
 //        echo $data['markdown'];die;
-//        $assign = [
-//            'data' => $data
-//        ];
-//        return view('home/article/index', $assign);
+        $assign = [
+            'data' => $data
+        ];
+        return view('home/article/index', $assign);
     }
 }

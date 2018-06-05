@@ -68,7 +68,6 @@
     <script>
         // 获取文章内容
         var articleMarkdown = $('.js-content').text();
-        console.log(articleMarkdown);
         marked.setOptions({
             sanitize: true,
             gfm: true,
@@ -76,9 +75,12 @@
         })
         // markdown 转 html
         var articleHtml = marked(articleMarkdown);
-        articleHtml = articleHtml.replace(/\n\s*\n*/g," <br />\n");
-        console.log(articleHtml);
+        // articleHtml = articleHtml.replace(/\n\s*\n*/g," <br />\n");
         $('.js-content').html(articleHtml);
+        $.each($('.js_content p'), function (index, val) {
+            var html = $(val).html();
+            $(val).html(html.replace(/\n/g," <br />\n"));
+        })
         // 添加行数
         $('pre').addClass('line-numbers');
         // 新页面跳转
