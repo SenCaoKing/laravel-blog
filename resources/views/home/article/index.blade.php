@@ -68,6 +68,7 @@
     <script>
         // 获取文章内容
         var articleMarkdown = $('.js-content').text();
+        articleMarkdown = articleMarkdown.replace(/\n{3,}/g, "&nbsp;\n");
         marked.setOptions({
             sanitize: true,
             gfm: true,
@@ -75,11 +76,14 @@
         })
         // markdown 转 html
         var articleHtml = marked(articleMarkdown);
-        // articleHtml = articleHtml.replace(/\n\s*\n*/g," <br />\n");
+        console.log(articleHtml);
+        console.log(3333333333);
+        articleHtml = articleHtml.replace("&nbsp;", " <br>");
+        console.log(articleHtml);
         $('.js-content').html(articleHtml);
         $.each($('.js_content p'), function (index, val) {
             var html = $(val).html();
-            $(val).html(html.replace(/\n/g," <br />\n"));
+            $(val).html(html.replace(/\n/g," <br>"));
         })
         // 添加行数
         $('pre').addClass('line-numbers');
