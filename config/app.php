@@ -192,6 +192,11 @@ return [
          */
         Intervention\Image\ImageServiceProvider::class,
 
+        /**
+         * socialiteproviders/weibo 微博登录
+         */
+        SocialiteProviders\Manager\ServiceProvider::class,
+
     ],
 
     /*
@@ -242,7 +247,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Purifier' => Mews\Purifier\Facades\Purifier::class,
         'Image' => Intervention\Image\Facades\Image::class,
-
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];
